@@ -16,6 +16,7 @@ quotes = [
   {
     quote: 'Each time we face our fear, we gain strength, courage, and confidence in the doing.',
     source: 'Theodore Roosevelt',
+    tags: '#self-help #politics #motivation'
   },
   {
     quote: 'Get busy living or get busy dying.',
@@ -87,12 +88,23 @@ function printQuote(){
   };
 
   if(randomQuoteObject.tags){
-    htmlString += `<span class="tags">${randomQuoteObject.tags}</span>`
+    htmlString += `<span class="tags"> ${randomQuoteObject.tags}</span>`
   };
+
   htmlString += '</p>';
 
   document.getElementById('quote-box').innerHTML = htmlString; 
+  randomBgColor();
 };
+
+//generate random color
+function randomBgColor(){
+  document.body.style.backgroundColor = '#' + hexColor() + hexColor() + hexColor();
+};
+function hexColor(){
+  return  Math.ceil(Math.random() * 255).toString(16);   //2 digits
+};
+
 
 
 //Auto-refreshed quotes
