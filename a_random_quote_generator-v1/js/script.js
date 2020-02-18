@@ -75,6 +75,10 @@ function getRandomQuote(){
  * The getRandomQuote function should create a random number, and use that random number to return a random quote object from the quotes array.
 ***/
 
+ //Auto-refreshed quotes
+const quoteTimer = 5000;
+let timer = setInterval(printQuote, quoteTimer);
+ 
 function printQuote(){
   let randomQuoteObject = getRandomQuote();
   let htmlString = `
@@ -95,7 +99,12 @@ function printQuote(){
 
   document.getElementById('quote-box').innerHTML = htmlString; 
   randomBgColor();
+
+  clearInterval(timer);
+  timer = setInterval(printQuote, quoteTimer);
 };
+
+
 
 //generate random color
 function randomBgColor(){
@@ -106,10 +115,6 @@ function hexColor(){
 };
 
 
-
-//Auto-refreshed quotes
-setInterval(printQuote, 10000);
-  
 
 /***
  * click event listener for the print quote button
